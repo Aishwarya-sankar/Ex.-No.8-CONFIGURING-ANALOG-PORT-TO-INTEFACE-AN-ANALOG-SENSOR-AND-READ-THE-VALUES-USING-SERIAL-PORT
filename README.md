@@ -150,17 +150,54 @@ This module also includes a potentiometer that will fix the threshold value, & t
 
 
 ##  Program 
+```
+Name: Aishwarya S
+Reg.NO: 212222100003
+```
+```
+#include "main.h"
+#include"stdio.h"
+uint32_t adcvalue;
+#if defined (_ICCARM) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#elif defined(_GNUC_)
+   
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif  
 
+while(1)
+{
 
+	HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1,100);
+			adcvalue = HAL_ADC_GetValue(&hadc1);
+			HAL_ADC_Stop(&hadc1);
+			HAL_Delay(500);
+			printf("ADC VALUE:%ld\n",adcvalue);
+
+}
+
+PUTCHAR_PROTOTYPE
+{
+
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
  
+```
 
-## Result :
  
 ## Output  :
-
-
-
-
-
-
-****
+## board setting and its connection:
+![image](https://github.com/Aishwarya-sankar/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/121418444/cabed0ad-9006-458a-b46b-a08c6f14fdb7)
+![image](https://github.com/Aishwarya-sankar/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/121418444/99593d84-4c94-434f-b6a5-f717b6e077f7)
+![image](https://github.com/Aishwarya-sankar/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/121418444/d772f064-6cd3-476d-93d1-61cd2e9181de)
+## General ADC value:
+![image](https://github.com/Aishwarya-sankar/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/121418444/956f9e22-ea8b-4963-b7aa-fd892d2e7689)
+## Dipping soil-moisture-sensor-device in water:
+![image](https://github.com/Aishwarya-sankar/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/121418444/f09f5465-9c52-4567-8458-1b51efd29dd9)
+## ADC value after dipping soil-moisture-device in water:
+![image](https://github.com/Aishwarya-sankar/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/121418444/dc97211a-3af7-4dac-bdd1-375a5836174e)
+## Result :
+Hence,the configuring analog port to inteface an analog sensor and read the values using serial port runned successfully.
